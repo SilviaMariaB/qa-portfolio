@@ -1,0 +1,17 @@
+{
+  "name": "cypress",
+  "version": "1.0.0",
+  "main": "SuitaCart.cy.js",
+  "scripts": {
+    "test": "npx cypress open",
+    "test:headless": "npx cypress run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": "Automated UI tests for SauceDemo using Cypress",
+  "devDependencies": {
+    "cypress": "^15.4.0"
+  }
+}

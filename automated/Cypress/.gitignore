@@ -1,0 +1,16 @@
+# Node dependencies
+node_modules/
+package-lock.json
+
+# Cypress generated files
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# Logs & cache
+*.log
+
+# IDE files
+.vscode/
+.idea/
+.DS_Store
