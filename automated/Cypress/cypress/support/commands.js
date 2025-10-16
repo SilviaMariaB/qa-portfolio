@@ -8,18 +8,41 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 //
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+//Generic login with standard user credentials
+Cypress.Commands.add('login', (userKey = 'standard_user') => {
+    cy.fixture('users').then(users =>{
+        const user = users[userKey];
+        cy.visit('https://www.saucedemo.com/');
+        cy.get('[data-test="username"]').type(user.username);
+        cy.get('[data-test="password"]').type(user.password);
+        cy.get('[data-test="login-button"]').click();
+    });
+});
+
+//add product in cart
+Cypress.Commands.add('addToCart', (productDataTest) => {
+    cy.get(`[data-test="add-to-cart-${productDataTest}"]`).click();
+});
+
+//go to cart
+Cypress.Commands.add('goToCart', () => {
+    cy.get('[data-test="shopping-cart-link"]').click();
+});
+
+//checkout with data from fixture
+Cypress.Commands.add('checkout', (dataKey = 'valid') => {
+    cy.get('[data-test="checkout"]').click();
+    cy.fixture('checkoutData').then((data) => {
+        const checkout = data[dataKey];
+        if (check.firstName) cy.get('[data-test="firstName"]').type(checkout.firstName);
+        if (check.lastName) cy.get('[data-test="lastName"]').type(checkout.lastName);
+        if (check.postalCode) cy.get('[data-test="postalCode"]').type(checkout.postalCode);
+        cy.get('[data-test="continue"]').click();
+    });
+});
+
+//finish checkout
+Cypress.Commands.add('finishCheckout', () => {
+    cy.get('[data-test="finish"]').click();
+    cy.get('[data-test="complete-header"]').should('be.visible');
+});

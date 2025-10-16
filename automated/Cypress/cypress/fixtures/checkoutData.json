@@ -1,0 +1,11 @@
+{
+    "valid": {
+        "firstName" : "Ana",
+        "lastName" : "Maria",
+        "postalCode" : "123456"
+    },
+    "missingLastName" : {
+        "firstName" : "Ana",
+        "postalCode" : "123456"
+    }
+}
