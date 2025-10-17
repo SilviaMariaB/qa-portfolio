@@ -28,6 +28,6 @@ describe('Checkout Regression', () => {
     it('Cancel checkout', () => {
         cy.get('[data-test="checkout"]').click();
         cy.get('[data-test="cancel"]').click();
-        cy.get('[data-test="inventory-container"]').should('be.visible');
+        cy.get('[data-test="inventory-item"]').should('be.visible');
     });
 });    

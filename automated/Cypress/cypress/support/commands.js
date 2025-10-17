@@ -34,9 +34,9 @@ Cypress.Commands.add('checkout', (dataKey = 'valid') => {
     cy.get('[data-test="checkout"]').click();
     cy.fixture('checkoutData').then((data) => {
         const checkout = data[dataKey];
-        if (check.firstName) cy.get('[data-test="firstName"]').type(checkout.firstName);
-        if (check.lastName) cy.get('[data-test="lastName"]').type(checkout.lastName);
-        if (check.postalCode) cy.get('[data-test="postalCode"]').type(checkout.postalCode);
+        if (checkout.firstName) cy.get('[data-test="firstName"]').type(checkout.firstName);
+        if (checkout.lastName) cy.get('[data-test="lastName"]').type(checkout.lastName);
+        if (checkout.postalCode) cy.get('[data-test="postalCode"]').type(checkout.postalCode);
         cy.get('[data-test="continue"]').click();
     });
 });
